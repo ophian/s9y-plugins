@@ -1,4 +1,4 @@
-<?php // $Id: serendipity_event_verify.php,v 1.06 2011/10/28 17:20:00 ian Exp $
+<?php // $Id: serendipity_event_verify.php, v 1.07 2011/11/09 18:52:00 ian Exp $
 
 
 if (IN_serendipity !== true) {
@@ -386,7 +386,7 @@ class serendipity_event_verify extends serendipity_event
                                 'plugins/serendipity_plugin_smiletag/serendipity_plugin_smiletag.php',
                                 'plugins/serendipity_plugin_twitter/serendipity_event_twitter.php',
                                 'plugins/serendipity_plugin_twitter/twitteroauth/twitteroauth.php',
-								'include/functions_images.inc.php',
+                                'include/functions_images.inc.php',
                                 /*unstable*/'tests/coverage/phpunit_coverage.php');
         }
         foreach ($ifiles AS $file => $key) { 
