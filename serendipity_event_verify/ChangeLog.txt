@@ -1,3 +1,11 @@
+1.07:
+-----
+
+added another file to exclude
+fixed output of show_verified_files array function
+fixed Directory Seperator of excludement array
+
+
 1.06:
 -----
 

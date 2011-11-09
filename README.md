@@ -33,7 +33,7 @@ Git Repo - Serendipity Plugins | 2011-11-09
 
 * **Type:** additional plugin
 * **Description:** Check Serendipity release and addditional files integrity
-* **Version:** 0.6 
+* **Version:** 1.07 
 * **Author:** Ian
 
 ## Name: serendipity_event_wrapurl

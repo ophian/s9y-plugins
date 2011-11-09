@@ -22,7 +22,7 @@ class serendipity_event_verify extends serendipity_event
         $propbag->add('description',   PLUGIN_VERIFY_DESCRIPTION);
         $propbag->add('stackable',     false);
         $propbag->add('author',        'Ian (Timbalu)');
-        $propbag->add('version',       '1.06');
+        $propbag->add('version',       '1.07');
         $propbag->add('requirements',  array(
             'serendipity' => '0.8',
             'smarty'      => '2.6.7',
@@ -276,12 +276,12 @@ class serendipity_event_verify extends serendipity_event
         
             echo '<h4>' . PLUGIN_VERIFY_ADMIN_ADD_HEAD_EX . '</h4>';
             $result2 = array_diff_key($trans, $serendipity['checksums_' . $serendipity['version']]);
-            $this->show_verified_files($result2, $dir);
+            $this->show_verified_files($result2, $dir, false);
         } 
     }
     
-    /* ToDo: have some sort of newline break after a dir */
-    function show_verified_files($filearray, $dir) { 
+    /* ToDo: have some sort of newline break after a dir - any idea? */
+    function show_verified_files($filearray, $dir, $show=true) { 
         if(is_array($filearray) && !empty($filearray) ) { 
             echo "<ul>\n";
             foreach($filearray AS $k => $v) { 
@@ -290,7 +290,7 @@ class serendipity_event_verify extends serendipity_event
                     filetype: <span class='backend_verify_blue'>" . @filetype($dir . $k) . "</span>, was last modified: 
                     <span class='serendipityAdminMsgError'>" . date ("F d Y H:i:s.", @filemtime($dir . $k)) . "</span></li>\n";
                 } else {
-                    echo "<li><span class='backend_verify_blue'>Missing file</span>: <strong>$k</strong></li>\n";
+                    if($show) echo "<li><span class='backend_verify_blue'>Missing file</span>: <strong>$k</strong></li>\n";
                 }
             }
             echo "</ul>\n";
@@ -360,39 +360,40 @@ class serendipity_event_verify extends serendipity_event
             $exclude_files = array( 
                                 'plugins/serendipity_event_autotitle/serendipity_event_autotitle.php',
                                 'plugins/serendipity_event_autoupdate/serendipity_event_autoupdate.php',
-                                'plugins\serendipity_event_babelfish\serendipity_event_babelfish.php',
-                                'plugins\serendipity_event_galleryimage\serendipity_event_galleryimage.php',
-                                'plugins\serendipity_event_geshi\geshi\php.php',
-                                'plugins\serendipity_event_gravatar\serendipity_event_gravatar.php',
-                                'plugins\serendipity_event_ljupdate\serendipity_event_ljupdate.php',
-                                'plugins\serendipity_event_mimetex\latexrender\class.latexrender.php',
-                                'plugins\serendipity_event_mobile_output\wurfl\wurfl_parser.php',
-                                'plugins\serendipity_event_motm\serendipity_event_motm.php',
-                                'plugins\serendipity_event_openid\PHP-openid\Services\Yadis\ParanoidHTTPFetcher.php',
-                                'plugins\serendipity_event_openid\PHP-openid\Services\Yadis\XML.php',
-                                'plugins\serendipity_event_phoneblogz\xmlrpc.inc'.
+                                'plugins/serendipity_event_babelfish/serendipity_event_babelfish.php',
+                                'plugins/serendipity_event_galleryimage/serendipity_event_galleryimage.php',
+                                'plugins/serendipity_event_geshi/geshi/php.php',
+                                'plugins/serendipity_event_gravatar/serendipity_event_gravatar.php',
+                                'plugins/serendipity_event_ljupdate/serendipity_event_ljupdate.php',
+                                'plugins/serendipity_event_mimetex/latexrender/class.latexrender.php',
+                                'plugins/serendipity_event_mobile_output/wurfl/wurfl_parser.php',
+                                'plugins/serendipity_event_motm/serendipity_event_motm.php',
+                                'plugins/serendipity_event_openid/PHP-openid/Services/Yadis/ParanoidHTTPFetcher.php',
+                                'plugins/serendipity_event_openid/PHP-openid/Services/Yadis/XML.php',
+                                'plugins/serendipity_event_phoneblogz/xmlrpc.inc'.
                                 'plugins/serendipity_event_plogpdf/gif.php',
-                                'plugins\serendipity_event_recaptcha\recaptcha\recaptchalib.php',
+                                'plugins/serendipity_event_recaptcha/recaptcha/recaptchalib.php',
                                 'plugins/serendipity_event_spamblock_bayes/serendipity_event_spamblock_bayes.php',
                                 'plugins/serendipity_event_spartacus/serendipity_event_spartacus.php',
-                                'plugins\serendipity_event_template_editor\serendipity_event_template_editor.php',
+                                'plugins/serendipity_event_template_editor/serendipity_event_template_editor.php',
                                 'plugins/serendipity_event_verify/serendipity_event_verify.php',
-                                'plugins\serendipity_event_wrapurl\serendipity_event_wrapurl.php',
+                                'plugins/serendipity_event_wrapurl/serendipity_event_wrapurl.php',
                                 'plugins/serendipity_event_xmlrpc/PEAR/XML/RPC.php',
-                                'plugins\serendipity_plugin_flickr\phpFlickr\PEAR\PEAR.php',
-                                'plugins\serendipity_plugin_flickr\phpFlickr\PEAR\DB\pgsql.php',
-                                'plugins\serendipity_plugin_heavyrotation\lib\coverfetcher.php',
-                                'plugins\serendipity_plugin_heavyrotation\lib\helper\aws_signed_request.php',
-                                'plugins\serendipity_plugin_smiletag\serendipity_plugin_smiletag.php',
-                                'plugins\serendipity_plugin_twitter\serendipity_event_twitter.php',
-                                'plugins\serendipity_plugin_twitter\twitteroauth\twitteroauth.php',
+                                'plugins/serendipity_plugin_flickr/phpFlickr/PEAR/PEAR.php',
+                                'plugins/serendipity_plugin_flickr/phpFlickr/PEAR/DB/pgsql.php',
+                                'plugins/serendipity_plugin_heavyrotation/lib/coverfetcher.php',
+                                'plugins/serendipity_plugin_heavyrotation/lib/helper/aws_signed_request.php',
+                                'plugins/serendipity_plugin_smiletag/serendipity_plugin_smiletag.php',
+                                'plugins/serendipity_plugin_twitter/serendipity_event_twitter.php',
+                                'plugins/serendipity_plugin_twitter/twitteroauth/twitteroauth.php',
+								'include/functions_images.inc.php',
                                 /*unstable*/'tests/coverage/phpunit_coverage.php');
         }
         foreach ($ifiles AS $file => $key) { 
-            if( (substr($file, -4) == '.php' || substr($file, -4) == '.htm') && is_writable($file) && false === in_array($file, $exclude_files)) { #echo $file . "<br />\n";
+            if( (substr($file, -4) == '.php' || substr($file, -4) == '.htm') && is_writable($file) && false === in_array($file, $exclude_files)) { 
                 $haystack = file_get_contents($file);
                 $haystack = str_replace(array("\r\n", "\r", "\n", "\t", "\s", " "), '', $haystack);
-                if($this->strpos_array($haystack, $needle)) { #echo $haystack;
+                if($this->strpos_array($haystack, $needle)) { 
                     $files[] = $file;
                 }
             }
