@@ -1,0 +1,16 @@
+1.06:
+-----
+
+changed function verifyAllFiles() to match empty array returning as a string and added (array) to 2cd argument of array_merge()
+added (string) to property since we use array_flip later, which needs values to be Integer or Strings
+
+
+1.05:
+-----
+
+added 'use PHP 5.1 up error' if file search array is empty
+added some more files to list of exceptions
+changed strpos to stripos to search case insensitive
+added inset bad words in search for .htm files too
+added inset bad words 'iframe'
+added de lang files
