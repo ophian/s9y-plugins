@@ -25,7 +25,7 @@ Git Repo - Serendipity Plugins | 2011-11-09
 ## Name: serendipity_event_nl2br
 
 * **Type:** core plugin
-* **Description:** Newline to <br /> or <p> plugin function for entry output
+* **Description:** Newline to &lt;br /&gt; or &lt;p&gt; plugin function for entry output
 * **Version:** 2.12
 * **Author:** core team & Ian
 
