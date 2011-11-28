@@ -1,5 +1,5 @@
 <?php # $Id: serendipity_event_staticpage.php,v 1.141 2011/09/06 09:39:06 garvinhicking Exp $
-	 #http://board.s9y.org/viewtopic.php?p=57348#57348
+     #http://board.s9y.org/viewtopic.php?p=57348#57348
 
 if (IN_serendipity !== true) {
     die ("Don't hack!");
@@ -20,7 +20,7 @@ class serendipity_event_staticpage extends serendipity_event
     var $staticpage = array();
     var $pagetype = array();
     var $pluginstats = array();
-	var $error_404 = FALSE;
+    var $error_404 = FALSE;
 
     var $config = array(
             'headline',
@@ -43,7 +43,7 @@ class serendipity_event_staticpage extends serendipity_event
             'pass',
             'filename',
             'is_startpage',
-			'is_404_page',
+            'is_404_page',
             'pageorder',
             'shownavi',
             'showonnavi'
@@ -84,8 +84,8 @@ class serendipity_event_staticpage extends serendipity_event
 
         $propbag->add('page_configuration', $this->config);
         $propbag->add('type_configuration', $this->config_types);
-        $propbag->add('author', 'Marco Rinck, Garvin Hicking, David Rolston, Falk Doering, Stephan Manske, Pascal Uhlmann');
-        $propbag->add('version', '3.87');
+        $propbag->add('author', 'Marco Rinck, Garvin Hicking, David Rolston, Falk Doering, Stephan Manske, Pascal Uhlmann, Ian');
+        $propbag->add('version', '3.88');
         $propbag->add('requirements',  array(
             'serendipity' => '0.8',
             'smarty'      => '2.6.7',
@@ -406,7 +406,7 @@ class serendipity_event_staticpage extends serendipity_event
 
         $res = serendipity_fetchCategories($serendipity['authorid']);
         $ret[0] = NONE;
-		if (is_array($res)) {
+        if (is_array($res)) {
             foreach ($res as $value) {
                 $ret[$value['categoryid']] = $value['category_name'];
             }
@@ -617,13 +617,15 @@ class serendipity_event_staticpage extends serendipity_event
                 case 'serendipity_event_guestbook':
                     $q = 'SELECT value
                             FROM '.$serendipity['dbPrefix'].'config
-                           WHERE name LIKE \'serendipity_event_guestbook%pagetitle\'';
+                           WHERE name LIKE \'serendipity_event_guestbook%'.(($serendipity['rewrite'] != 'none') ? 'permalink' : 'pagetitle').'\'';
                     $ret = serendipity_db_query($q, true, 'assoc');
                     if (is_array($ret)) {
-                        $page[$plugin] = array(
-                            'name' => (defined('GUESTBOOK_TITLE') ? GUESTBOOK_TITLE : PLUGIN_GUESTBOOK_TITLE),
-                            'link' => $serendipity['serendipityHTTPPath'].$serendipity['indexFile'].'?serendipity[subpage]='.$ret['value']
-                        );
+                        $page[$plugin]['name'] = (defined('GUESTBOOK_TITLE') ? GUESTBOOK_TITLE : PLUGIN_GUESTBOOK_TITLE);
+                        if ($serendipity['rewrite'] != 'none') {
+                            $page[$plugin]['link'] = $ret['value'];
+                        } else {
+                            $page[$plugin]['link'] = $serendipity['serendipityHTTPPath'].$serendipity['indexFile'].'?serendipity[subpage]='.$ret['value'];
+                        }
                     }
                     break;
 
@@ -860,13 +862,13 @@ class serendipity_event_staticpage extends serendipity_event
                 );
                 serendipity_db_insert('staticpages_types', $this->pagetype);
 
-				$sql = 'CREATE TABLE '.$serendipity['dbPrefix'].'staticpage_categorypage (
+                $sql = 'CREATE TABLE '.$serendipity['dbPrefix'].'staticpage_categorypage (
                             categoryid int(4) default 0,
                             staticpage_categorypage int(4) default 0
                         ) {UTF_8}';
                 serendipity_db_schema_import($sql);
             case 17:
-				$sql = 'CREATE TABLE '.$serendipity['dbPrefix'].'staticpage_custom (
+                $sql = 'CREATE TABLE '.$serendipity['dbPrefix'].'staticpage_custom (
                             staticpage int(11),
                             name varchar(128),
                             value text
@@ -1037,9 +1039,9 @@ class serendipity_event_staticpage extends serendipity_event
         if (!isset($this->smarty_init)) {
             @include_once dirname(__FILE__) . '/smarty.inc.php';
             if (isset($serendipity['smarty'])) {
-				$staticpage_cat = $this->fetchCatProp($serendipity['GET']['category']);
-	   		    $serendipity['smarty']->assign('staticpage_categorypage', $this->fetchStaticPageForCat($staticpage_cat));
-				$serendipity['smarty']->assign('serendipityArchiveURL', getArchiveURL());
+                $staticpage_cat = $this->fetchCatProp($serendipity['GET']['category']);
+                   $serendipity['smarty']->assign('staticpage_categorypage', $this->fetchStaticPageForCat($staticpage_cat));
+                $serendipity['smarty']->assign('serendipityArchiveURL', getArchiveURL());
                 $serendipity['smarty']->register_function('getCategoryLinkByID', 'smarty_getCategoryLinkByID');
                 $serendipity['smarty']->register_function('staticpage_display', 'staticpage_display');
                 $serendipity['staticpage_plugin'] =& $this;
@@ -1134,9 +1136,9 @@ class serendipity_event_staticpage extends serendipity_event
 
             $related_category_entries = null;
             if ($this->get_static('related_category_id') >= 0) {
-	            if ($this->get_static('related_category_id') > 0) {
-	                $serendipity['GET']['category'] = $this->get_static('related_category_id');
-				}
+                if ($this->get_static('related_category_id') > 0) {
+                    $serendipity['GET']['category'] = $this->get_static('related_category_id');
+                }
                 $select_key = "ep_sticky.value AS orderkey, e.id, e.title, e.timestamp";
 
                 $related_category_entries = serendipity_fetchEntries(null,
@@ -1182,7 +1184,7 @@ class serendipity_event_staticpage extends serendipity_event
                 $pagevar . 'shownavi'           => $this->get_static('shownavi'),
                 $pagevar . 'custom'             => $this->get_static('custom')
 // same thing as above
-//                    $pagevar . 'related_category_entries'   		=> $related_category_entries
+//                    $pagevar . 'related_category_entries'           => $related_category_entries
             )
         );
 
@@ -1203,7 +1205,7 @@ class serendipity_event_staticpage extends serendipity_event
         global $serendipity;
 
         if ($this->selected()) {
-			if ($this->error_404 === FALSE) {
+            if ($this->error_404 === FALSE) {
                 serendipity_header($_SERVER['SERVER_PROTOCOL'].' 200 OK');
                 serendipity_header('Status: 200 OK');
             }
@@ -2583,10 +2585,10 @@ class serendipity_event_staticpage extends serendipity_event
                WHERE id = '.(int)$staticpage_id.'
                LIMIT 1';
         $cache =  serendipity_db_query($q, true, 'assoc');
-     	if (is_array($cache)) {
-     		return $cache;
-     	}
-     	return false;
+         if (is_array($cache)) {
+             return $cache;
+         }
+         return false;
     }
 
 
@@ -2602,10 +2604,10 @@ class serendipity_event_staticpage extends serendipity_event
         global $serendipity;
 
         if (debug_staticpage == 'true') {
-        	echo "category ";
-        	echo $cid;
-        	echo " staticpage ";
-        	echo $val['staticpage_categorypage'];
+            echo "category ";
+            echo $cid;
+            echo " staticpage ";
+            echo $val['staticpage_categorypage'];
         }
 
         serendipity_db_query("DELETE FROM {$serendipity['dbPrefix']}staticpage_categorypage
@@ -2628,14 +2630,14 @@ class serendipity_event_staticpage extends serendipity_event
             switch ($event) {
 
                 case 'backend_category_showForm':
-	                $pages = $this->fetchStaticPages(true);
-	                $categorypage = $this->fetchCatProp((int)$eventData);
+                    $pages = $this->fetchStaticPages(true);
+                    $categorypage = $this->fetchCatProp((int)$eventData);
 
                     if (debug_staticpage == 'true') {
-                    	echo "category ";
-                    	echo (int)$eventData . " ";
-                    	echo " staticpage ";
-                    	echo $this->fetchCatProp((int)$eventData);
+                        echo "category ";
+                        echo (int)$eventData . " ";
+                        echo " staticpage ";
+                        echo $this->fetchCatProp((int)$eventData);
                     }
 
 ?>
@@ -2660,7 +2662,7 @@ class serendipity_event_staticpage extends serendipity_event
                 }
 
 ?>
-			</select>
+            </select>
 
 
         </td>
@@ -2683,7 +2685,7 @@ class serendipity_event_staticpage extends serendipity_event
                 case 'backend_category_update':
                 case 'backend_category_addNew':
                     $val = array(
-                    	'categoryid '               =>  (int)$eventData,
+                        'categoryid '               =>  (int)$eventData,
                         'staticpage_categorypage'   => $serendipity['POST']['cat']['staticpage_categorypage'],
                     );
                     $this->setCatProps($eventData, $val);
@@ -2791,14 +2793,14 @@ class serendipity_event_staticpage extends serendipity_event
                         return true;
                     }
 
-					if ($eventData[0]['type'] == 'dir'){
-					
-					}
-					
-					elseif ($eventData[0]['type'] == 'filedir'){
+                    if ($eventData[0]['type'] == 'dir'){
+                    
+                    }
+                    
+                    elseif ($eventData[0]['type'] == 'filedir'){
 
-						 $eventData[0]['oldDir'] .= $eventData[0]['name'];
-        			     $eventData[0]['newDir'] .= $eventData[0]['name'];
+                         $eventData[0]['oldDir'] .= $eventData[0]['name'];
+                         $eventData[0]['newDir'] .= $eventData[0]['name'];
                     }
 
 
