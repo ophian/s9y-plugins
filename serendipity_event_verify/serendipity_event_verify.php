@@ -135,10 +135,7 @@ class serendipity_event_verify extends serendipity_event
         // no time limit
         @set_time_limit(0);
 
-        #static $attention  = '';
-        #if($attention == '') { 
-            $attention  = '<img class="backend_attention" src="' . $serendipity['serendipityHTTPPath'] . 'templates/default/admin/img/admin_msg_note.png" alt="" />';
-        #}
+        $attention  = '<img class="backend_attention" src="' . $serendipity['serendipityHTTPPath'] . 'templates/default/admin/img/admin_msg_note.png" alt="" />';
         $verifycat  = !empty($serendipity['GET']['verifycategory']) ? $serendipity['GET']['verifycategory'] : $serendipity['POST']['verifycategory'];
         
         echo "\n<div id='backend_verify_wrapper'>\n\n";
