@@ -1,43 +1,46 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
-<HTML>
-<HEAD>
-<TITLE>Dokumentace: Návštěvní kniha</TITLE>
-<META http-equiv="Content-Type" content="text/html; charset=windows-1250"> 
- <STYLE type="text/css">
-  BODY { font: 80%/130% 'Lucida Grande',Geneva,Verdana,Arial,sans-serif; background: #A8A8A8; color: #333; margin: 20px; border: 1px solid #000 }
-  A:link { color: #F0F0F0 }
-  A:visited { color: #bbb }
-  A:active { color: #FF6600 }
-  h2 { padding: 20px 0;text-decoration: underline; line-height: 1.2em;}
-  p { background: #EAEAEA; border: 1px solid #666 }
-  h2 span.date {font-size: small;color: #6280A2; letter-spacing: 0.1em; }
-  #wrapper { background: #F0F0F0; color: #333; padding: 10px; }
-  #wrapper div.doc_edited { float: right; color: #A8A8A8; padding: 4px; font-size: 7.4pt; }
-  #wrapper div.skip { float: right; color: #A8A8A8; margin: 4px 0; padding: 4px; font-size: 7.4pt; }
-  #wrapper div.dark a { color: #333; }
-  #wrapper div.doc_block { display: block; padding: 4px; text-align: justify; font-size: 9pt; font-weight:bold; line-height: 1.2em; background-color: #282828; color: #777; }
-  #wrapper div.doc_block .readme_title { margin: 5px 0; padding: 8px 4px; font-weight: 700; text-decoration: underline; background-color: #1C1C1C; background: -moz-linear-gradient(left 20deg, #1C1C1C, #696969); border: 1px solid #828282; }
-  #wrapper div.doc_block .white { color: #F0F0F0; }
-  #wrapper div.doc_block .eye { color: #ff6600 }
-  #wrapper div.doc_block .cssblock { display: block; margin-left: 60px; }
-  #wrapper div.changelog { background-color: transparent; }
-  #wrapper div.changelog .readme_title { margin: 0 -4px; }
-  #wrapper div.changelog a { color: #333; }
-  #wrapper div.doc_block ul.readme li { line-height: 1.5em; background: none repeat scroll 0 0 #333; }
-  #wrapper div.doc_block ul.readme li em { color: #E8E8E8; font-size: 8pt; font-weight: 500; }
-  #wrapper div.doc_block ul.config li em { color: #B8B8B8; }
-  h1 {font-size: 150%; color: white; text-align: left; margin-top: 25px;}
-  </STYLE>
+<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Dokumentace: Návštěvní kniha</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"> 
+    <style type="text/css">
+        /*<![CDATA[*/
+        body { font: 80%/130% 'Lucida Grande',Geneva,Verdana,Arial,sans-serif; background: #A8A8A8; color: #333; margin: 20px; border: 1px solid #000 }
+        a:link { color: #F0F0F0 }
+        a:visited { color: #bbb }
+        a:active { color: #FF6600 }
+        h2 { padding: 20px 0;text-decoration: underline; line-height: 1.2em;}
+        p { background: #EAEAEA; border: 1px solid #666 }
+        h2 span.date {font-size: small;color: #6280A2; letter-spacing: 0.1em; }
+        #wrapper { background: #F0F0F0; color: #333; padding: 10px; }
+        #wrapper div.doc_edited { float: right; color: #A8A8A8; padding: 4px; font-size: 7.4pt; }
+        #wrapper div.skip { float: right; color: #A8A8A8; margin: 4px 0; padding: 4px; font-size: 7.4pt; }
+        #wrapper div.dark a { color: #333; }
+        #wrapper div.doc_block { display: block; padding: 4px; text-align: justify; font-size: 9pt; font-weight:bold; line-height: 1.2em; background-color: #282828; color: #777; }
+        #wrapper div.doc_block .readme_title { margin: 5px 0; padding: 8px 4px; font-weight: 700; text-decoration: underline; background-color: #1C1C1C; background: -moz-linear-gradient(left 20deg, #1C1C1C, #696969); border: 1px solid #828282; }
+        #wrapper div.doc_block .white { color: #F0F0F0; text-decoration: underline; font-weight: bold; }
+        #wrapper div.doc_block .eye { color: #ff6600 }
+        #wrapper div.doc_block .cssblock { display: block; margin-left: 60px; }
+        #wrapper div.changelog { background-color: transparent; }
+        #wrapper div.changelog .readme_title { margin: 0 -4px; }
+		#wrapper div.changelog a { color: #333; }
+        #wrapper div.doc_block ul.readme li { line-height: 1.5em; background: none repeat scroll 0 0 #333; }
+        #wrapper div.doc_block ul.readme li em { color: #E8E8E8; font-size: 8pt; font-weight: 500; }
+        #wrapper div.doc_block ul.config li em { color: #B8B8B8; }
+		h1 {font-size: 150%; color: white; text-align: left; margin-top: 25px;}
+        #wrapper div.skip a { color: #F0F0F0 }
+        /*]]>*/
+    </style>
 
-</HEAD>
-<BODY><a name="top"></a>
+</head>
+<body><a name="top"></a>
 <div id="wrapper">
-<div class="doc_edited">serendipity_event_guestbook/documentation_cs.html, poslední změna 28. září, 2010</div>
+<div class="doc_edited">serendipity_event_guestbook/documentation_cs.html, poslední změna 29. června 2011</div>
 <div class="doc_block">
 	<h1>Dokumentace k pluginu 'Návštěvní kniha' (Guestbook)</h1>
     <span class="white"><b><u>MĚJTE NA PAMĚTI!</u></b></span><br />
-<br />Dokumentaci k tomuto pluginu přeložil do češtiny Vladimír Ajgl (vlada [zavinac] ajgl [tecka] cz) dne 28.9.2010. Od té doby mohl být plugin pozměněn nebo mohly být rozšířené jeho funkce. Zkontrolujte pro jistotu i <a href="documentation_en.html">aktuální anglickou dokumentaci</a>.
+<br />Dokumentaci k tomuto pluginu přeložil do češtiny Vladimír Ajgl (vlada [zavinac] ajgl [tecka] cz) dne 29.6.2011. Od té doby mohl být plugin pozměněn nebo mohly být rozšířené jeho funkce. Zkontrolujte pro jistotu i <a href="documentation_en.html">aktuální anglickou dokumentaci</a>.
     <br /><br />
     Tento Serendipity plugin "Návštěvní kniha" je založen na ŠABLONÁCH vzhledu, nastavitelný vlastním stylopisem, má FRONTEND (to, co se zobrazuje návštěvníkům blogu) a BACKEND (stránky v administrační sekci sloužící k nastavení pluginu).<br />
     Přečtěte si prosím pečlivě části <a href="#config">Nastavení</a>, <a href="#admin">Administrace</a>, <a href="#design">Vzhled</a> a nejnověji měněné položky v části <a href="#change">Changelog</a>. <br />
@@ -63,6 +66,8 @@
     <li><span class="eye">'WWW stránka uživatele'</span> nastavuje, zda-li bude zobrazeno políčko pro zadání www stránky uživatele (<em>výchozí: ne</em>).</li>
     <li><span class="eye">'Zobrazovat kryptogramy'</span> určuje, jestli bude zadání příspěvku chráněno nutností správně přepsat kryptogram jako ochrana proti spamu. (vyžaduje nainstalovaný a aktivní plugin Spamblock) (<em>výchozí: ano</em>).</li>
     <li><span class="eye">'Schvalovat příspěvky'</span> nastavuje, jestli budou příspěvky v návštěvní knize zobrazeny až poté, co je schválí administrátor blogu (<em>výchozí: ne</em>).</li>
+    <li><span class="eye">'Automatické schvalování'</span> nastavuje podobné chování pro jednotlivé vzkazy. Pokud je aktivní slovní filtr pluginu "spamblock", pokud je nastaven na "schvalovat", pokud je nastavena tato volba a pokud je nalezeno nevhodné slovo, vzkaz je označen ke schválení a není zobrazen. (<em>výchozí: ne</em>) Hodnocení obsahu návštěvní knihy přesto nadále vyžaduje potvrzení pomocí kryptogramu, pokud je zde přípěvek vyhodnocen jako spam. Tím se liší chování návštěvní knihy od běžného spamblocku!</li>
+    <li><span class="eye">'Kontroly vzkazů'</span> nastavuje aktivní individuální slovní filtr (<em>výchozí: předvyplněno</em>). Regulární výrazy jsou povolené, jednotlivé se oddělují středníkem (;). Musíte escapovat speciální znaky pomocí "\". Pokud necháte pole prázdné, nebudou se provádě žádné speciální kontroly. </li>
     <li><span class="eye">'Formát data'</span> umožňuje nastavit libovolný formát pro zobrazení data příspěvku pomocí funkce php strftime() (<em>výchozí: %a, %d.%m.%Y %H:%M</em>).</li>
     </ul>
     <a name="admin"></a>
@@ -72,11 +77,12 @@
     <div class="readme_title">S9Y :: GUESTBOOK :: ADMINISTRACE</a></div>
     
     <ul class="readme administration">
-        <li>Po přihlášení do blogu je možné spravovat plugin jak z administártorské sekce (z backendu), tak přímo ze stránky návštěvní knihy (z frontendu). Z frontendu je možné pouze mazat příspěvky. Před smazáním budete požádáni o potvrzení smazání.</li>
+        <li>Po přihlášení do blogu je možné spravovat plugin jak z administártorské sekce (z backendu), tak přímo ze stránky návštěvní knihy (z frontendu). Z frontendu je možné pouze mazat příspěvky. Před smazáním budete požádáni o potvrzení smazání.<br />
+		Administrace z frontendu byla odstraněna ve verzi 3.24.</li>
         <li>Postranní sloupec v backendu blogu má čtyři položky pro správu návštěvní knihy: <br />
         1. &#160; zobrazení schválených příspěvků, <br />
         2. &#160; zobrazení neschválených příspěvků, <br />
-        3. &#160; úprava starého nebo vložení nového příspěvku, <br />
+        3. &#160; úprava starého nebo vložení nového příspěvku (pokud je <span class="eye">'Schvalovat příspěvky'</span> nastaveno na 'ano'), <br />
         4. &#160; databázová část.</li>
         <li>První dvě položky umožňují potvrzení, smazání (okamžité bez potvrzení!) nebo znovu zadání jednotlivého příspěvku.</li>
         <li>Databázová část umožňuje: zálohovat a stáhnout databázovou tabulku návštěvní knihy, nebo okamžité smazání databázové tabulky. Při práci zde opatrně! (Akce zde jsou mocné a zpravidla nevratné.)</li>
@@ -127,7 +133,7 @@
 
     <a name="change"></a>
     
-    <div class="skip"><a href="#top">Top</a></div>
+	<div class="skip"><a href="#top">Nahoru</a></div>
     
     <div class="readme_title">S9Y :: NÁVŠTĚVNÍ KNIHA :: CHANGELOG</div>
     
@@ -141,6 +147,75 @@
  *    Užijte si to. .... Ian                                    <br />
  ****************************************************************
 </p>
+
+<h2>Verze 3.27 <span class="date">[ 27.6.2011 ]</span></h2>
+
+<ul>
+    <li>změna šablon backendu/frontendu včetně změn souboru se styly backend.css z tabulkového layoutu na seznam a jejich aktualizace</li>
+    <li>změněna interního značkování nastavení, aby nastavilo výchozí hodnotu {$plugin_guestbook_articleformat} na (ano) v šabloně plugin_guestbook_entries.tpl.</li>
+    <li>změněno zalamování řádků v postranním pluginu</li>
+    <li>opravená sql procedura "alter update" a "remove"</li>
+    <li>změněno zobrazení backendu pro celou administrátorskou skupinu, ne pouze pro administrátora</li>
+</ul>
+
+<h2>Verze 3.26 <span class="date">[ 8.3.2011 ]</span></h2>
+
+<ul>
+    <li>Oprava časového razítka ve volání funkce spamblock na -8 dní do minulosti, zatímco captchas_ttl považuje krytpogramy jako platní do 7 dní.</li>
+    <li>Oprava administrační sekce; V některých chybových případech se ztatily proměnné POST.</li>
+    <li>Změněna jazyková konstanta ERROR_DATANOTAGS v jazycích &lt;en&gt;, &lt;de&gt;, &lt;de-utf8&gt;, &lt;cs&gt;, &lt;cs-utf8&gt;, &lt;cz&gt; a &lt;cz-utf8&gt;, aby podporovala novou funkci slovního filtru.</li>
+    <li>Přidána nová předvyplněná volba do nastavení, která umožňuje vypnout slovní filtr pluginu pro tělo vzkazu, která byla dříve vypínána interně.</li>
+    <li>Přidány interní proměnné do funkce pro správnou podporu nekompletních chybových zpráv.</li>
+    <li>Změna jazykových konstant v jazycích &lt;en&gt;, &lt;de&gt;, &lt;de-utf8&gt;, &lt;cs&gt;, &lt;cs-utf8&gt;, &lt;cz&gt; a &lt;cz-utf8&gt;, aby lépe vysvětlily rozdíly mezi jednotlivými způsoby schvalování vzkazů a kontrol proti spamu.</li>
+    <li>Změněna dokumentace documentation_en.html (kterou obsahuje i současná verze české documentation_cs.html), aby lépe vysvětlila rozdíl mezi kontrolou pomocí kryptogramů proti automatickému schvalování a nové volbě 'kontrola příspěvků'.</li>
+</ul>
+
+<h2>Verze 3.25 <span class="date">[ 6.3.2011 ]</span></h2>
+
+<ul>
+    <li>Přesun interních proměnných na lepší místo.</li>
+    <li>Změna šablony plugin_guestbook_backend_entries.tpl, aby podporovala skrytou proměnnou pro schvalování.</li>
+    <li>Vymazána volba schvalování v postranním pluginu, která byla zavedena ve verzi 3.21, protože postranní sloupec je nyní rozšířen o nastavení pluginu události.</li>
+    <li>Přestavěný postranní sloupec &lt;serendipity_plugin_guestbook&gt;, aby podporoval změny v nastavení 'automatické schvalování' a 'schvalování administrátorem'.</li>
+    <li>Přidány jazykové konstanty v jazycích &lt;en&gt;, &lt;de&gt;, &lt;de-utf8&gt;, &lt;cs&gt;, &lt;cs-utf8&gt;, &lt;cz&gt; a &lt;cz-utf8&gt;.</li>
+    <li>Přidáno nové nastavení, které umožňuje nastavit automatické schvalování pomocí pluginu spamblock, pokud je jeho slovní filtr aktivní a nastavený na 'schvalovat'.</li>
+    <li>Opravy pravopisu v německých jazykových souborech.</li>
+    <li>Upraveny drobnosti v CSS souboru návštěvní knihy.</li>
+    <li>Přidána návratová hodnota spamblocku 'schvalování komentářů', podpora vkládání vzkazů jako neschválených; rozšiřuje nastavení návštěvní knihy.</li>
+</ul>
+
+<h2>Verze 3.24 <span class="date">[ 23.2.2011 ]</span></h2>
+
+<ul>
+    <li>Přidány kontroly tagů a odkazů jako prevence před tím, aby spamboti četli kryptogramy.</li>
+    <li>Upraveny drobnosti v CSS souboru návštěvní knihy.</li>
+    <li>Změna jazykových konstant PAGINATOR_* a přidání nových konstant ERROR_DATANOTAGS v jazycích &lt;en&gt;, &lt;de&gt;, &lt;de-utf8&gt;, &lt;cs&gt;, &lt;cs-utf8&gt;, &lt;cz&gt; a &lt;cz-utf8&gt;.</li>
+    <li>Starý stránkovač nahrazen novým.</li>
+    <li>Změna šablony plugin_guestbook_entries.tpl, aby podporovala odstraněnou administraci.</li>
+    <li>Oodstraněny administrátorské funkce z frontendu, protože se lépe dělají v backendu.</li>
+</ul>
+
+<h2>Verze 3.23 <span class="date">[ 17.2.2011 ]</span></h2>
+
+<ul>
+    <li>Nejnovější: dopředná kompatibilita se smarty 3</li>
+</ul>
+
+<h2>Verze 3.22 <span class="date">[ 15.2.2011 ]</span></h2>
+
+<ul>
+    <li>Změněno volání metody smarty->fetch, aby podporovalo pořadí parametrů jak podle smarty 2, tak podle smarty 3 - odstraněn parametr 4.</li>
+    <li>Přidáno omezení funkcí administračního rozhraní a administrace z postranního sloupce pouze na přihlášeného administrátora.</li>
+</ul>
+
+<h2>Verze 3.21 <span class="date">[ 24.1.2011 ]</span></h2>
+
+<ul>
+    <li>Opraveno odesílání vzkazu na email, které nezobrazovalo správně tělo vzkazu.</li>
+    <li>Znovuzavedení falešného volání spamblocku a dalších pluginů komentářů, které bylo odstraněno v 3.20, aby bránilo spambotům v odchytávání kryptogramů.</li>
+    <li> Oprava serendipity_plugin_guestbook.php, aby správně zobrazeovalo pouze schválené vzkazy, pokud je to zadáno v nastavení.</li>
+    <li>Opravení překlepů v jazykovém souboru lang_en.* a upravení dokumentace tak, aby byla validní s W3C XHTML.</li>
+</ul>
  
 <h2>Verze 3.20 <span class="date">[ 17.7.2010 ]</span></h2>
 
@@ -287,9 +362,13 @@
 
 </div>
 
+<p>
+<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
+</p>
+
 <div class="skip dark"><a href="#top">Nahoru</a></div>
 
 </div>
 
-</BODY>
-</HTML>
+</body>
+</html>

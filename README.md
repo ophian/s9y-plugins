@@ -19,14 +19,14 @@ Git Repo - Serendipity Plugins | 2011-11-09
 
 * **Type:** additional plugin
 * **Description:** An ordinary guestbook
-* **Version:** 3.27
+* **Version:** 3.29
 * **Author:** Ian
 
 ## Name: serendipity_event_nl2br
 
 * **Type:** core plugin
 * **Description:** Newline to &lt;br /&gt; or &lt;p&gt; plugin function for entry output
-* **Version:** 2.12
+* **Version:** 2.15
 * **Author:** core team & Ian
 
 ## Name: serendipity_event_verify

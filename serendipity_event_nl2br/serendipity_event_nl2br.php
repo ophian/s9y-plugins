@@ -1,4 +1,5 @@
-<?php # $Id: serendipity_event_nl2br.php 2011-11-08 19:14:00Z ian $
+<?php # $Id$
+# serendipity_event_nl2br.php 2012-04-21 16:11:00 ian $
 
 @serendipity_plugin_api::load_language(dirname(__FILE__));
 
@@ -14,7 +15,7 @@ class serendipity_event_nl2br extends serendipity_event
         $propbag->add('description',   PLUGIN_EVENT_NL2BR_DESC);
         $propbag->add('stackable',     false);
         $propbag->add('author',        'Serendipity Team');
-        $propbag->add('version',       '2.12');
+        $propbag->add('version',       '2.15');
         $propbag->add('requirements',  array(
             'serendipity' => '0.8',
             'smarty'      => '2.6.7',
@@ -22,10 +23,10 @@ class serendipity_event_nl2br extends serendipity_event
         ));
         $propbag->add('cachable_events', array('frontend_display' => true));
             
-        $propbag->add('event_hooks',     array('frontend_display' => true, 
-                                               'backend_display'  => false,
-                                               'css'              => true)
-                                               );
+        $propbag->add('event_hooks',     array('frontend_display'  => true, 
+                                               'backend_configure' => true,
+                                               'css'               => true
+                     ));
         $propbag->add('groups', array('MARKUP'));
 
         $this->markup_elements = array(
@@ -62,7 +63,14 @@ class serendipity_event_nl2br extends serendipity_event
         if ( serendipity_db_bool($this->get_config('isobr')) === true && serendipity_db_bool($this->get_config('clean_tags')) === true ) { 
             $this->set_config('clean_tags', false);
             echo '<div class="serendipityAdminMsgError"><img class="backend_attention" src="' . $serendipity['serendipityHTTPPath'] . 'templates/default/admin/img/admin_msg_note.png" alt="" />';
-            echo PLUGIN_EVENT_NL2BR_CONFIG_ERROR . '</div>';
+            echo sprintf(PLUGIN_EVENT_NL2BR_CONFIG_ERROR, 'clean_tags', 'ISOBR') . '</div>';
+            return false;
+        }
+        /* check possible config mismatch setting */
+        if ( serendipity_db_bool($this->get_config('isobr')) === true && serendipity_db_bool($this->get_config('p_tags')) === true ) { 
+            $this->set_config('p_tags', false);
+            echo '<div class="serendipityAdminMsgError"><img class="backend_attention" src="' . $serendipity['serendipityHTTPPath'] . 'templates/default/admin/img/admin_msg_note.png" alt="" />';
+            echo sprintf(PLUGIN_EVENT_NL2BR_CONFIG_ERROR, 'p_tags', 'ISOBR') . '</div>';
             return false;
         }
         return true;
@@ -243,10 +251,20 @@ class serendipity_event_nl2br extends serendipity_event
                 return true;
                 break;
 
-                case 'backend_display':
-                    // It is possible to change already assigned entry vars afterwards, but in this case the template output happened earlier, 
-                    // in the Heart Of Gold = serendipity_printEntryForm()
-                    // it would be nice to hook in however, to display a different /serendipity/templates/default/admin/entries.tpl file.
+                case 'backend_configure':
+
+                    // check single entry for temporary disabled markups
+                    if( $isobr ) { 
+                        $serendipity['nl2br']['iso2br'] = true; // include to global as also used by staticpages now
+
+                        if (!is_object($serendipity['smarty'])) { 
+                            serendipity_smarty_init(); // if not set to avoid member function assign() on a non-object error, start Smarty templating
+                        }
+                        
+                        // hook into default/admin/entries.tpl somehow via the Heart Of Gold = serendipity_printEntryForm() before! it is loaded
+                        $serendipity['smarty']->assign('iso2br', true);
+                    }
+                
                 
                 return true;
                 break;
