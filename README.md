@@ -1,4 +1,4 @@
-Git Repo - Serendipity Plugins | 2011-05-03
+Git Repo - Serendipity Plugins | 2011-05-04
 ===
 
 ## Name: serendipity_event_cal 
@@ -26,7 +26,7 @@ Git Repo - Serendipity Plugins | 2011-05-03
 
 * **Type:** core plugin
 * **Description:** Newline to &lt;br /&gt; or &lt;p&gt; plugin function for entry output
-* **Version:** 2.15
+* **Version:** 2.16
 * **Author:** core team & Ian
 
 ## Name: serendipity_event_verify
