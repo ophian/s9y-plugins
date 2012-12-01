@@ -19,7 +19,7 @@ Git Repo - Serendipity Plugins | 2011-05-04
 
 * **Type:** additional plugin
 * **Description:** An ordinary guestbook
-* **Version:** 3.29
+* **Version:** 3.31
 * **Author:** Ian
 
 ## Name: serendipity_event_nl2br
@@ -33,7 +33,7 @@ Git Repo - Serendipity Plugins | 2011-05-04
 
 * **Type:** additional plugin
 * **Description:** Check Serendipity release and addditional files integrity
-* **Version:** 1.07 
+* **Version:** 1.08 
 * **Author:** Ian
 
 ## Name: serendipity_event_wrapurl
