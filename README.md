@@ -1,4 +1,4 @@
-Git Repo - Serendipity Plugins | 2011-05-04
+Git Repo - Serendipity Plugins | 2012-12-01
 ===
 
 ## Name: serendipity_event_cal 
