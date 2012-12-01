@@ -359,6 +359,7 @@ class serendipity_event_verify extends serendipity_event
                                 'plugins/serendipity_event_autotitle/serendipity_event_autotitle.php',
                                 'plugins/serendipity_event_autoupdate/serendipity_event_autoupdate.php',
                                 'plugins/serendipity_event_babelfish/serendipity_event_babelfish.php',
+                                'plugins/serendipity_event_dashboard/serendipity_event_dashboard.php',
                                 'plugins/serendipity_event_galleryimage/serendipity_event_galleryimage.php',
                                 'plugins/serendipity_event_geshi/geshi/php.php',
                                 'plugins/serendipity_event_gravatar/serendipity_event_gravatar.php',
