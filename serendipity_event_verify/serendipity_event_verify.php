@@ -1,5 +1,6 @@
-<?php // $Id: serendipity_event_verify.php, v 1.07 2011/11/09 18:52:00 ian Exp $
+<?php // $Id:$
 
+// serendipity_event_verify.php,v 1.08 2012/12/01 13:57:00 ian Exp 
 
 if (IN_serendipity !== true) {
     die ("Don't hack!");
@@ -22,7 +23,7 @@ class serendipity_event_verify extends serendipity_event
         $propbag->add('description',   PLUGIN_VERIFY_DESCRIPTION);
         $propbag->add('stackable',     false);
         $propbag->add('author',        'Ian (Timbalu)');
-        $propbag->add('version',       '1.07');
+        $propbag->add('version',       '1.08');
         $propbag->add('requirements',  array(
             'serendipity' => '0.8',
             'smarty'      => '2.6.7',
@@ -371,6 +372,7 @@ class serendipity_event_verify extends serendipity_event
                                 'plugins/serendipity_event_plogpdf/gif.php',
                                 'plugins/serendipity_event_recaptcha/recaptcha/recaptchalib.php',
                                 'plugins/serendipity_event_spamblock_bayes/serendipity_event_spamblock_bayes.php',
+                                'plugins/serendipity_event_spamblock_bee/json/JSON.php',
                                 'plugins/serendipity_event_spartacus/serendipity_event_spartacus.php',
                                 'plugins/serendipity_event_template_editor/serendipity_event_template_editor.php',
                                 'plugins/serendipity_event_verify/serendipity_event_verify.php',
